@@ -90,6 +90,7 @@ console.log(clara);
 console.log(clara.demo("crispity, crunchity, peanut buttery Javascript"));
 
 
+
 //Student
 
 const tom = new Student({name: "Tom", age: 28, location: "Pawnee, IN", previousBackground: "Restauranteur, Entrepreneur, Parks Department Clerk", className: "WEBPT7", favSubjects: ["Treat Yo-Self", "Javascript"], grade: 62.25});
@@ -97,6 +98,7 @@ const tom = new Student({name: "Tom", age: 28, location: "Pawnee, IN", previousB
 console.log(tom);
 console.log(tom.listsSubjects());
 console.log(tom.graduate());
+console.log(clara.grade(tom, "Javascript"));
 
 //Stretch Goal
 console.log(clara.gradeReview(tom, 12));
@@ -109,3 +111,4 @@ const jerry = new ProjectManager({name: "Jerry", age: "Unknown", location: "Unkn
 
 console.log(jerry);
 console.log(jerry.debugsCode(tom, "Javascript"));
+console.log(jerry.standUp("#webpt7_jerry"));
