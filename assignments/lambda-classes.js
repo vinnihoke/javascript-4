@@ -26,6 +26,10 @@ class Instructor extends Person {
 	grade(student, subject){
 		return `${student.name} receives a perfect score on ${subject}`;
 	}
+
+	gradeReview(student, pointsAdjust){
+		return student.grade = student.grade += Math.random() + pointsAdjust;
+	}
 }
 
 class Student extends Person {
@@ -34,6 +38,7 @@ class Student extends Person {
 		this.previousBackground = attr.previousBackground;
 		this.className = attr.className;
 		this.favSubjects = attr.favSubjects;
+		this.grade = attr.grade;
 	}
 
 	listsSubjects(){ //Loop that console logs each favSubjects
@@ -48,6 +53,14 @@ class Student extends Person {
 
 	sprintChallenge(subject){
 		return `${student.name} has begun sprint challenge on ${subject}`;
+	}	
+	
+	graduate(){
+		if(this.grade > 70){
+			return `Congrats ${this.name}, you're clear for graduation at Lambda!`;
+		} else {
+			return `Uh oh ${this.name}, you need to review some assignments.`;
+		}
 	}
 }
 
@@ -65,6 +78,8 @@ class ProjectManager extends Person {
 	debugsCode(student, subject){
 		return `${this.name} debugs ${student.name}'s code on ${subject}`;
 	}
+
+
 }
 
 
@@ -74,12 +89,21 @@ const clara = new Instructor({name: "Clara", age: 32, location: "South Bay Area"
 console.log(clara);
 console.log(clara.demo("crispity, crunchity, peanut buttery Javascript"));
 
+
+
 //Student
 
-const tom = new Student({name: "Tom", age: 28, location: "Pawnee, IN", previousBackground: "Restauranteur, Entrepreneur, Parks Department Clerk", className: "WEBPT7", favSubjects: ["Treat Yo-Self", "Javascript"]});
+const tom = new Student({name: "Tom", age: 28, location: "Pawnee, IN", previousBackground: "Restauranteur, Entrepreneur, Parks Department Clerk", className: "WEBPT7", favSubjects: ["Treat Yo-Self", "Javascript"], grade: 62.25});
 
 console.log(tom);
 console.log(tom.listsSubjects());
+console.log(tom.graduate());
+console.log(clara.grade(tom, "Javascript"));
+
+//Stretch Goal
+console.log(clara.gradeReview(tom, 12));
+console.log(tom.graduate());
+
 
 //ProjectManager
 
@@ -87,3 +111,4 @@ const jerry = new ProjectManager({name: "Jerry", age: "Unknown", location: "Unkn
 
 console.log(jerry);
 console.log(jerry.debugsCode(tom, "Javascript"));
+console.log(jerry.standUp("#webpt7_jerry"));
